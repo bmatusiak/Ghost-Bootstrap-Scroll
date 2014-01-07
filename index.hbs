@@ -1,0 +1,53 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+    <div class="row">
+        <div id="side-nav" class="col-md-3 affix hidden-xs hidden-sm" style="margin-top:27px;margin-left: 27px;">
+            <ul class="nav nav-pills nav-stacked" >
+            {{#foreach posts}}
+                <li>
+                    <a href="#post{{id}}">{{title}}</a>
+                </li>
+            {{/foreach}}
+            </ul>
+            {{pagination}}
+        </div>
+        <div class="col-md-9 pull-right">
+            {{#foreach posts}}
+                <section class="well" id="post{{id}}" style="margin: 27px;">
+                    <h1><a href="{{url}}">{{title}}</a></h1>
+                    <hr>
+                    <p>{{content}}</p>
+                    <hr/>
+                    <div class="pull-right">
+                        <a class="icon-twitter" href="http://twitter.com/share?text={{title}}&url={{url absolute="true"}}"
+                            onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                            <span class="hidden">Twitter</span>
+                        </a>
+                        <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}"
+                            onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                            <span class="hidden">Facebook</span>
+                        </a>
+                        <a class="icon-google-plus" href="https://plus.google.com/share?url={{url absolute="true"}}"
+                           onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                            <span class="hidden">Google+</span>
+                        </a>
+                    </div>
+                    {{#if author}}
+                        <div class="author">
+                            {{#if author.website}}<a  href="{{author.website}}" >{{/if}}
+                            <i>{{author.name}}</i>
+                            {{#if author.website}}</a>{{/if}} - <span class="post-meta"><time datetime="{{date format='YYYY-MM-DD'}}">{{date format="MMMM D, YYYY"}}</time> {{#if tags}} | Tags: {{tags}}{{/if}}</span>
+                        </div>
+                    {{/if}}
+                    
+                </section>
+            {{/foreach}}
+            {{!! After all the posts, we have the previous/next pagination links }}
+            <div class="visible-sm" style="margin-left:27px;">
+                {{pagination}}
+            </div>
+        </div>
+    </div>
