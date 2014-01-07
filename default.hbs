@@ -21,15 +21,15 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-theme.min.css">
     <style type="text/css">
         body {
-            padding-top: 60px;
+            /*padding-top: 60px;*/
             overflow:hidden;
-        }
+        }/*
         .affix-top{
             padding-top:60px;
         }
         .affix{
             padding-top:0px;
-        }
+        }*/
         /* Import the font file with the icons in it */
         @font-face {
             font-family: 'icons';
@@ -98,9 +98,9 @@
     </div>
 
     {{! Everything else gets inserted here }}
-    <div style="overflow: scroll;height: 100%;width: 100%;position: fixed;margin: 0;padding: 0;padding-bottom: 50px;top: 50px;left: 0;right: 0;bottom: 0;"  data-spy="scroll" data-target="#side-nav" data-offset="40">
+    <div class="mainbody" style="overflow-x: hidden;overflow-y: auto;width: 100%;position: fixed;margin: 0;padding: 0;top: 50px;left: 0;right: 0;bottom: 0;"  data-spy="scroll" data-target="#side-nav" data-offset="40">
     {{{body}}}
-        <div class="container well">
+        <div class="container well bodyfooter">
             <div class="row" style="text-align:center;">
             <a class="subscribe icon-feed" href="{{@blog.url}}/rss/"><span class="tooltip">Subscribe!</span></a>
             <div class="inner">
