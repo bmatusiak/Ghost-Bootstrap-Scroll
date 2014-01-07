@@ -54,6 +54,9 @@
             -webkit-font-smoothing: antialiased;
             text-decoration: none;
         }
+        .icon-ghost:hover, .icon-feed:hover, .icon-twitter:hover, .icon-google-plus:hover, .icon-facebook:hover{
+            text-decoration: none;
+        }
         
         /* Each icon is created by inserting the corret character into the 
            content of the :before pseudo element. Like a boss. */
@@ -97,8 +100,18 @@
     {{! Everything else gets inserted here }}
     <div style="overflow: scroll;height: 100%;width: 100%;position: fixed;margin: 0;padding: 0;padding-bottom: 50px;top: 50px;left: 0;right: 0;bottom: 0;"  data-spy="scroll" data-target="#side-nav" data-offset="40">
     {{{body}}}
+        <div class="container well">
+            <div class="row" style="text-align:center;">
+            <a class="subscribe icon-feed" href="{{@blog.url}}/rss/"><span class="tooltip">Subscribe!</span></a>
+            <div class="inner">
+                 <section class="copyright">All content copyright <a href="/">{{@blog.title}}</a> &copy; 2013 &bull; All rights reserved.</section>
+                 <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://ghost.org"> Ghost</a></section>
+            </div>
+            </div>
+        </div>
     </div>
-
+    
+    
 
     {{! Ghost outputs important scripts and data with this tag }}
     {{ghost_foot}}
