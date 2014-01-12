@@ -9,8 +9,6 @@
     <title>{{meta_title}}</title>
     <meta name="description" content="{{meta_description}}" />
 
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="MobileOptimized" content="320" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <script src="/assets/libs/ace/ace.js"></script>
@@ -77,13 +75,16 @@
             margin: -9px;
             display: block;
         }
+        .well{
+            word-wrap: break-word;
+        }
     </style>
 
     {{! Ghost outputs important style and meta data with this tag }}
     {{ghost_head}}
     
 </head>
-<body class="{{body_class}}" data-spy="scroll" data-target="#side-nav" data-offset="150">
+<body class="{{body_class}}" data-spy="scroll" data-target="#side-nav" data-offset="150" style="max-width: 100%;">
     <div style="height:150px;background-color:#3C3C3C;border-bottom: 50px solid black;margin-bottom: 10px;text-align: center;">
         {{#if @blog.logo}}<a id="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Blog Logo" style="max-height:70px;margin-top: 15px;" class="img-circle" /></a>{{/if}}
     </div>
@@ -100,7 +101,7 @@
     
     {{! Everything else gets inserted here }}
     {{{body}}}
-    <div class="container well bodyfooter">
+    <div class="container well bodyfooter" style="max-width: 100%;">
         <div class="row" style="text-align:center;">
         <a class="subscribe icon-feed" href="{{@blog.url}}/rss/"><span class="tooltip">Subscribe!</span></a>
         <div class="inner">

@@ -11,7 +11,7 @@
             top: 79px;
         }
     </style>
-    <div class="row">
+    <div class="row" style="max-width: 100%;margin-left: 0px;">
         <div id="side-nav" class="col-md-3 hidden-xs hidden-sm" data-spy="affix" data-offset-top="90">
             <ul class="nav nav-pills nav-stacked" >
             {{#foreach posts}}
@@ -22,7 +22,7 @@
             </ul>
             {{pagination}}
         </div>
-        <div class="col-md-8 pull-right main-content">
+        <div class="col-md-8 pull-right main-content" style="max-width: 100%;padding: 0;">
             {{#foreach posts}}
                 <section class="well" id="post{{id}}" style="margin-left: 27px;margin-right: 27px;">
                     <h1><a href="{{url}}">{{title}}</a></h1>
