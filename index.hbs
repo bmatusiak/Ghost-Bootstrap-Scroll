@@ -3,12 +3,16 @@
 {{! The comment above "< default" means - insert everything in this file into
     the {body} of the default.hbs template, which contains our header/footer. }}
     <style>
+        #side-nav{
+            margin-left: 27px;
+            width: 30%;
+        }
         #side-nav.affix{
-            margin-left:27px;
+            top: 79px;
         }
     </style>
     <div class="row">
-        <div id="side-nav" class="col-md-3 hidden-xs hidden-sm affix" style="margin-top:27px;">
+        <div id="side-nav" class="col-md-3 hidden-xs hidden-sm" data-spy="affix" data-offset-top="90">
             <ul class="nav nav-pills nav-stacked" >
             {{#foreach posts}}
                 <li>
@@ -18,9 +22,9 @@
             </ul>
             {{pagination}}
         </div>
-        <div class="col-md-9 pull-right main-content">
+        <div class="col-md-8 pull-right main-content">
             {{#foreach posts}}
-                <section class="well" id="post{{id}}" style="margin: 27px;">
+                <section class="well" id="post{{id}}" style="margin-left: 27px;margin-right: 27px;">
                     <h1><a href="{{url}}">{{title}}</a></h1>
                     <hr>
                     <p>{{content}}</p>

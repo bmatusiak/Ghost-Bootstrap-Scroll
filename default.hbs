@@ -13,24 +13,12 @@
     <meta name="MobileOptimized" content="320" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    {{! highlight.js }}
-    <link rel="stylesheet" type="text/css" href="/assets/css/highlight/styles/default.css">
-    <script type="text/javascript" src="/assets/css/highlight/highlight.pack.js"></script>
+    <script src="/assets/libs/ace/ace.js"></script>
     
     <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-theme.min.css">
     <style type="text/css">
-        body {
-            /*padding-top: 60px;*/
-            overflow:hidden;
-        }/*
-        .affix-top{
-            padding-top:60px;
-        }
-        .affix{
-            padding-top:0px;
-        }*/
-        /* Import the font file with the icons in it */
+        
         @font-face {
             font-family: 'icons';
             src:url('/assets/fonts/icons.eot');
@@ -76,17 +64,30 @@
         .icon-facebook:before {
             content: "\e004";
         }
-
+        #mainNav.affix-top{
+            margin-top: -60px;
+        }
+        #mainNav.affix{
+            width: 100%;
+            top: 0;
+            z-index: 10000;
+            
+        }
+        pre code{
+            margin: -9px;
+            display: block;
+        }
     </style>
 
     {{! Ghost outputs important style and meta data with this tag }}
     {{ghost_head}}
     
 </head>
-<body class="{{body_class}}" data-spy="scroll" data-target="#side-nav">
-
-    
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<body class="{{body_class}}" data-spy="scroll" data-target="#side-nav" data-offset="150">
+    <div style="height:150px;background-color:#3C3C3C;border-bottom: 50px solid black;margin-bottom: 10px;text-align: center;">
+        {{#if @blog.logo}}<a id="blog-logo" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Blog Logo" style="max-height:70px;margin-top: 15px;" class="img-circle" /></a>{{/if}}
+    </div>
+    <div id="mainNav" class="navbar navbar-inverse affix-top" role="navigation" data-spy="affix" data-offset-top="90">
         <div class="container">
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{@blog.url}}">{{@blog.title}}</a>
@@ -96,18 +97,16 @@
             </ul>
         </div>
     </div>
-
+    
     {{! Everything else gets inserted here }}
-    <div class="mainbody" style="overflow-x: hidden;overflow-y: auto;width: 100%;position: fixed;margin: 0;padding: 0;top: 50px;left: 0;right: 0;bottom: 0;"  data-spy="scroll" data-target="#side-nav" data-offset="40">
     {{{body}}}
-        <div class="container well bodyfooter">
-            <div class="row" style="text-align:center;">
-            <a class="subscribe icon-feed" href="{{@blog.url}}/rss/"><span class="tooltip">Subscribe!</span></a>
-            <div class="inner">
-                 <section class="copyright">All content copyright <a href="/">{{@blog.title}}</a> &copy; <script language="JavaScript" type="text/javascript">now = new Date;theYear=now.getYear();if (theYear < 1900);theYear=theYear+1900;document.write(theYear)</script> &bull; All rights reserved.</section>
-                 <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://ghost.org"> Ghost</a></section>
-            </div>
-            </div>
+    <div class="container well bodyfooter">
+        <div class="row" style="text-align:center;">
+        <a class="subscribe icon-feed" href="{{@blog.url}}/rss/"><span class="tooltip">Subscribe!</span></a>
+        <div class="inner">
+             <section class="copyright">All content copyright <a href="/">{{@blog.title}}</a> &copy; <script language="JavaScript" type="text/javascript">now = new Date;theYear=now.getYear();if (theYear < 1900);theYear=theYear+1900;document.write(theYear)</script> &bull; All rights reserved.</section>
+             <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://ghost.org"> Ghost</a></section>
+        </div>
         </div>
     </div>
     
@@ -118,6 +117,7 @@
 
     <script src="/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/assets/js/index.js"></script>
+    
     
 </body>
 </html>
